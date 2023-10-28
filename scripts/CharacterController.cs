@@ -3,8 +3,15 @@ using System;
 
 public partial class CharacterController : CharacterBody2D
 {
+	[Export]
+	public GameState state;
+	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	
+	[Export]
+	public double timeoutThreshold = 3.0;
+	public double timeout = 0.0;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -32,6 +39,20 @@ public partial class CharacterController : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		
+		if(Velocity.X == 0){
+			if(timeout >= timeoutThreshold){
+				state.looseGame();
+			}
+			timeout += delta;
+		}
+		else{
+			timeout = 0.0;
+		}
+		
+		if(GlobalPosition.Y > 1000){
+			state.looseGame();
+		}		
 
 		Velocity = velocity;
 		MoveAndSlide();

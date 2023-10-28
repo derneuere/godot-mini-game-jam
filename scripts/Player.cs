@@ -21,6 +21,9 @@ public partial class Player : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	private Node2D collisionNode;
+	//private Dictionary input_queue;
+	private float current_time = 0;
+	private float run_time = 0;
 
 	public override void _Ready()
 	{

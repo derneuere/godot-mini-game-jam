@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameOverText : Label
+public partial class GameOverText : Control
 {
 	[Export]
 	private GameState state { get; set; }
