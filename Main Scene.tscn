@@ -23,7 +23,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 131079, 0, 5, 131079, 0, 6, 131079, 0, 7, 131079, 0, 8, 131079, 0, -131066, 65544, 5, -131065, 131080, 5, -131064, 196616, 5, 9, 131079, 0, 10, 131079, 0, 11, 131079, 0, 12, 196615, 0, 16, 131079, 0, 17, 131079, 0, 18, 196615, 0, 15, 131079, 0, 14, 65543, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("state", "timeLabel") instance=ExtResource("6_53fjw")]
-position = Vector2(-3, -84)
+position = Vector2(-1, -8)
 state = NodePath("../GameState")
 timeLabel = NodePath("../Camera2D/Label")
 running = true

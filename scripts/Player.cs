@@ -109,19 +109,26 @@ public partial class Player : CharacterBody2D
 			jump = false;
 		}
 
-		// Tween tween = GetTree().CreateTween();
 		// if (Input.IsActionJustPressed("slide"))
 		if(slide_start)
 		{
 			GD.Print("sliding");
 			sliding = true;
-			collisionNode.Scale = new Vector2(1.0f, 0.5f);
+			Tween tween = GetTree().CreateTween();
+			// tween.TweenProperty(GetNode("CollisionShape2D"), "scale", new Vector2(1.0f, 0.5f), 0.2f);
+			// tween.TweenProperty(GetNode("AnimatedSprite2D"), "scale", new Vector2(1.0f, 0.5f), 0.2f);
+			tween.TweenProperty(this, "scale", new Vector2(1.0f, 0.5f), 0.2f);
+			// collisionNode.Scale = new Vector2(1.0f, 0.5f);
 			slide_start = false;
 		// } else if (Input.IsActionJustReleased("slide"))
 		} else if (slide_stop)
 		{
 			GD.Print("stopped sliding");
 			sliding = false;
+			Tween tween = GetTree().CreateTween();
+			// tween.TweenProperty(GetNode("CollisionShape2D"), "scale", Vector2.One, 0.2f);
+			// tween.TweenProperty(GetNode("AnimatedSprite2D"), "scale", Vector2.One, 0.2f);
+			tween.TweenProperty(this, "scale", Vector2.One, 0.2f);
 			collisionNode.Scale = Vector2.One;
 			slide_stop = false;
 		}
