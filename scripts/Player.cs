@@ -2,65 +2,44 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class Player : Area2D
+public partial class player : CharacterBody2D
 {
+
 	private Dictionary input_queue;
 	private double current_time = 0;
 	private double run_time = 0;
 
-	public override void _Ready()
-	{
-		run_time = 0.0f;
-	}
+	public const float Speed = 300.0f;
+	public const float JumpVelocity = -400.0f;
 
-	public override void _Process(double delta)
+	// Get the gravity from the project settings to be synced with RigidBody nodes.
+	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+
+	public override void _PhysicsProcess(double delta)
 	{
-		run_time += delta;
-		
+		Vector2 velocity = Velocity;
+
+		// Add the gravity.
+		if (!IsOnFloor())
+			velocity.Y += gravity * (float)delta;
+
+		// Handle Jump.
+		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+			velocity.Y = JumpVelocity;
+
+		// Get the input direction and handle the movement/deceleration.
+		// As good practice, you should replace UI actions with custom gameplay actions.
+		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		if (direction != Vector2.Zero)
+		{
+			velocity.X = direction.X * Speed;
+		}
+		else
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
+
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 }
-
-/*
-extends Area2D
-
-var input_queue
-var current_time = 0
-var run_time
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# get input queue from game manager
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	current_time += delta
-	var time_slot = int(current_time / 1000)
-	if (input_queue.has(time_slot)):
-		var action = input_queue[time_slot]
-		input_queue.erase(time_slot)
-		match(action):
-			"slide":
-				slide()
-			
-	pass
-
-func slide():
-	# play slide animation
-	# make hitbox smaller
-	# check for proper ground
-	pass
-	
-func die():
-	pass
-	
-func start():
-	pass
-	
-func finish():
-	pass
-	
-	
-
-*/
