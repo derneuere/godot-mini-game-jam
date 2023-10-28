@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfsq810qnok35"]
+[gd_scene load_steps=8 format=3 uid="uid://dfsq810qnok35"]
 
 [ext_resource type="Script" path="res://CharacterController.cs" id="1_7uof4"]
 [ext_resource type="Texture2D" uid="uid://c2i835voiyw75" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="1_bcqk3"]
+[ext_resource type="Script" path="res://GameState.cs" id="1_hddgb"]
 [ext_resource type="TileSet" uid="uid://ckk5v3dd7fc1k" path="res://Tileset.tres" id="2_ohp1y"]
 [ext_resource type="Script" path="res://GameOverText.cs" id="4_slswl"]
 
@@ -15,6 +16,9 @@ shadow_color = Color(0, 0, 0, 0.0823529)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(6, 421)
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("1_hddgb")
 
 [node name="Blue Boi" type="CharacterBody2D" parent="."]
 position = Vector2(50, -122)
@@ -31,7 +35,7 @@ tile_set = ExtResource("2_ohp1y")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state")]
 offset_left = 163.0
 offset_top = -201.0
 offset_right = 936.0
@@ -39,3 +43,4 @@ offset_bottom = -13.0
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_xfyhy")
 script = ExtResource("4_slswl")
+state = NodePath("../GameState")
