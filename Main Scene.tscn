@@ -1,63 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfsq810qnok35"]
+[gd_scene load_steps=8 format=3 uid="uid://dfsq810qnok35"]
 
-[ext_resource type="Texture2D" uid="uid://be3dq7t4fynxa" path="res://kenney_shape-characters/Spritesheet/Vector/overview.svg" id="1_83373"]
+[ext_resource type="Texture2D" uid="uid://c2i835voiyw75" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="1_bcqk3"]
+[ext_resource type="Script" path="res://scripts/GameState.cs" id="1_fysrf"]
+[ext_resource type="TileSet" uid="uid://ckk5v3dd7fc1k" path="res://Tileset.tres" id="2_ohp1y"]
+[ext_resource type="Script" path="res://scripts/CharacterController.cs" id="2_yhbk6"]
+[ext_resource type="Script" path="res://scripts/GameOverText.cs" id="5_mvee3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y824o"]
-resource_name = "Yellow Floor"
-texture = ExtResource("1_83373")
-margins = Vector2i(610, 450)
-separation = Vector2i(10, 0)
-texture_region_size = Vector2i(80, 80)
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
-5:0/0 = 0
-5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:0/0/physics_layer_0/angular_velocity = 0.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tdl0"]
+radius = 40.7063
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g83ew"]
-resource_name = "Other Floor"
-texture = ExtResource("1_83373")
-margins = Vector2i(610, 340)
-separation = Vector2i(10, 0)
-texture_region_size = Vector2i(80, 40)
-0:5/0 = 0
-0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:5/0/physics_layer_0/angular_velocity = 0.0
-1:5/0 = 0
-1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:5/0/physics_layer_0/angular_velocity = 0.0
-2:5/0 = 0
-2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:5/0/physics_layer_0/angular_velocity = 0.0
-3:5/0 = 0
-3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:5/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_e45ua"]
-tile_size = Vector2i(80, 80)
-physics_layer_0/collision_layer = 1
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/7 = SubResource("TileSetAtlasSource_y824o")
-sources/8 = SubResource("TileSetAtlasSource_g83ew")
+[sub_resource type="LabelSettings" id="LabelSettings_xfyhy"]
+font_size = 135
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.0823529)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(6, 421)
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("1_fysrf")
+
+[node name="Blue Boi" type="CharacterBody2D" parent="."]
+position = Vector2(50, -122)
+script = ExtResource("2_yhbk6")
+
+[node name="BlueBodyCircle" type="Sprite2D" parent="Blue Boi"]
+texture = ExtResource("1_bcqk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Boi"]
+shape = SubResource("CircleShape2D_5tdl0")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_e45ua")
+tile_set = ExtResource("2_ohp1y")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -65532, 327687, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5)
+layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 163.0
+offset_top = -201.0
+offset_right = 936.0
+offset_bottom = -13.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_xfyhy")
+script = ExtResource("5_mvee3")

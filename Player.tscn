@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bseksr1q16oh0"]
+[gd_scene load_steps=4 format=3 uid="uid://bseksr1q16oh0"]
 
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_r1u5p"]
 [ext_resource type="Texture2D" uid="uid://c8e828aeaeias" path="res://player_tmp.png" id="1_seyln"]
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_tus4s"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="3_cvbmr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kxhgh"]
 animations = [{
@@ -21,7 +20,7 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
-script = ExtResource("1_tus4s")
+script = ExtResource("1_r1u5p")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -31,4 +30,3 @@ animation = &"run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("3_cvbmr")
