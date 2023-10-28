@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bseksr1q16oh0"]
+
+[ext_resource type="Texture2D" uid="uid://c8e828aeaeias" path="res://player_tmp.png" id="1_seyln"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_tus4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxhgh"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_seyln")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_tus4s")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kxhgh")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
