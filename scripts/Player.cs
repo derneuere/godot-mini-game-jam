@@ -10,6 +10,15 @@ public partial class Player : CharacterBody2D
 	private double run_time = 0;
 
 	[Export]
+	public GameState state;
+	[Export]
+	public double timeoutThreshold = 3.0;
+	public double timeout = 0.0;
+
+	[Export]
+	private Label timeLabel;
+
+	[Export]
 	private bool running = false;
 	private bool sliding = false;
 
@@ -28,6 +37,23 @@ public partial class Player : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		current_time += delta;
+		timeLabel.Text = String.Format("Time: {0}", current_time);
+
+		if(Velocity.X == 0){
+			if(timeout >= timeoutThreshold){
+				state.looseGame();
+			}
+			timeout += delta;
+		}
+		else{
+			timeout = 0.0;
+		}
+		
+		if(GlobalPosition.Y > 1000){
+			state.looseGame();
+		}		
+
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
@@ -52,6 +78,7 @@ public partial class Player : CharacterBody2D
 			sliding = false;
 			collisionNode.Scale = Vector2.One;
 		}
+
 
 
 		// Get the input direction and handle the movement/deceleration.

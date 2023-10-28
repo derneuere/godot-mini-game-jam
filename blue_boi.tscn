@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cilgqprq2pot8"]
+
+[ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_mhiee"]
+[ext_resource type="Texture2D" uid="uid://c2i835voiyw75" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="2_hk5wu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tdl0"]
+radius = 40.7063
+
+[node name="Blue Boi" type="CharacterBody2D" node_paths=PackedStringArray("state")]
+position = Vector2(50, -122)
+script = ExtResource("1_mhiee")
+state = NodePath("")
+timeoutThreshold = 1.595
+
+[node name="BlueBodyCircle" type="Sprite2D" parent="."]
+texture = ExtResource("2_hk5wu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5tdl0")
