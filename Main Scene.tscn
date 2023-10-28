@@ -20,10 +20,10 @@ script = ExtResource("1_fysrf")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_ohp1y")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
+layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 131079, 0, 5, 131079, 0, 6, 131079, 0, 7, 131079, 0, 8, 131079, 0, -131066, 65544, 5, -131065, 131080, 5, -131064, 196616, 5, 9, 131079, 0, 10, 131079, 0, 11, 131079, 0, 12, 196615, 0, 16, 131079, 0, 17, 131079, 0, 18, 196615, 0, 15, 131079, 0, 14, 65543, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("state", "timeLabel") instance=ExtResource("6_53fjw")]
-position = Vector2(81, -209)
+position = Vector2(-3, -84)
 state = NodePath("../GameState")
 timeLabel = NodePath("../Camera2D/Label")
 running = true

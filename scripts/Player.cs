@@ -1,11 +1,13 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
 
-	private Dictionary input_queue;
+	// private Dictionary input_queue;
+	public Queue<InputElement> inputQueue;
 	private double current_time = 0;
 	private double run_time = 0;
 
@@ -25,20 +27,58 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 160.0f;
 	public const float JumpVelocity = -400.0f;
 
+	private InputElement nextInput = null;
+
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	private Node2D collisionNode;
-	//private Dictionary input_queue;
+	
+
 	public override void _Ready()
 	{
 		collisionNode = (Node2D)GetNode("CollisionShape2D");
+		inputQueue = new Queue<InputElement>();
+		inputQueue.Enqueue(new InputElement(2.5, "slide_start"));
+		inputQueue.Enqueue(new InputElement(5.5, "slide_stop"));
+		inputQueue.Enqueue(new InputElement(6.5, "jump"));
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		double old_time = current_time;
+		bool jump = false;
+		bool slide_start = false;
+		bool slide_stop = false;
 		current_time += delta;
 		timeLabel.Text = String.Format("Time: {0}", current_time);
+
+		if(nextInput == null) 
+		{
+			if (inputQueue.Count > 0)
+				nextInput = inputQueue.Dequeue();
+		}
+		else
+		{
+			if ((old_time <= nextInput.Time) && (nextInput.Time < current_time))
+			{
+				switch(nextInput.InputEvent)
+				{
+					case "jump":
+						jump = true;
+						break;
+					case "slide_start":
+						slide_start = true;
+						break;
+					case "slide_stop":
+						slide_stop = true;
+						break;
+					default:
+						break;
+				}
+				nextInput = null;
+			}
+		}
 
 		if(Velocity.X == 0){
 			if(timeout >= timeoutThreshold){
@@ -61,22 +101,29 @@ public partial class Player : CharacterBody2D
 			velocity.Y += gravity * (float)delta;
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		// if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if(jump && IsOnFloor())
 		{
 			GD.Print("jump");
 			velocity.Y = JumpVelocity;
+			jump = false;
 		}
 
-		if (Input.IsActionJustPressed("slide"))
+		// Tween tween = GetTree().CreateTween();
+		// if (Input.IsActionJustPressed("slide"))
+		if(slide_start)
 		{
 			GD.Print("sliding");
 			sliding = true;
 			collisionNode.Scale = new Vector2(1.0f, 0.5f);
-		} else if (Input.IsActionJustReleased("slide"))
+			slide_start = false;
+		// } else if (Input.IsActionJustReleased("slide"))
+		} else if (slide_stop)
 		{
 			GD.Print("stopped sliding");
 			sliding = false;
 			collisionNode.Scale = Vector2.One;
+			slide_stop = false;
 		}
 
 
