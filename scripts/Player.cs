@@ -1,11 +1,12 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Player : Area2D
 {
 	private Dictionary input_queue;
-	private float current_time = 0;
-	private float run_time = 0;
+	private double current_time = 0;
+	private double run_time = 0;
 
 	public override void _Ready()
 	{
