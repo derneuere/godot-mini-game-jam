@@ -24,6 +24,7 @@ script = ExtResource("1_fysrf")
 position = Vector2(50, -122)
 script = ExtResource("2_yhbk6")
 state = NodePath("../GameState")
+timeoutThreshold = 1.595
 
 [node name="BlueBodyCircle" type="Sprite2D" parent="Blue Boi"]
 texture = ExtResource("1_bcqk3")
