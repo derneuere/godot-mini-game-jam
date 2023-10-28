@@ -1,14 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfsq810qnok35"]
+[gd_scene load_steps=5 format=3 uid="uid://dfsq810qnok35"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8b00"]
-size = Vector2(1149, 115)
+[ext_resource type="Texture2D" uid="uid://be3dq7t4fynxa" path="res://kenney_shape-characters/Spritesheet/Vector/overview.svg" id="1_83373"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y824o"]
+resource_name = "Yellow Floor"
+texture = ExtResource("1_83373")
+margins = Vector2i(610, 450)
+separation = Vector2i(10, 0)
+texture_region_size = Vector2i(80, 80)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g83ew"]
+resource_name = "Other Floor"
+texture = ExtResource("1_83373")
+margins = Vector2i(610, 340)
+separation = Vector2i(10, 0)
+texture_region_size = Vector2i(80, 40)
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0 = 0
+2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_e45ua"]
+tile_size = Vector2i(80, 80)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/7 = SubResource("TileSetAtlasSource_y824o")
+sources/8 = SubResource("TileSetAtlasSource_g83ew")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
-position = Vector2(575.5, 590.5)
-shape = SubResource("RectangleShape2D_d8b00")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_e45ua")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -65532, 327687, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5)
