@@ -36,30 +36,34 @@ tile_set = ExtResource("2_ohp1y")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
 
-[node name="ColorRect" type="ColorRect" parent="." node_paths=PackedStringArray("state")]
+[node name="GameOverScreen" type="Control" parent="." node_paths=PackedStringArray("state")]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -6.0
 offset_top = -418.0
-offset_right = 1148.0
-offset_bottom = 233.0
-color = Color(0, 0, 0, 0.392157)
+offset_right = 34.0
+offset_bottom = -378.0
 script = ExtResource("5_mvee3")
 state = NodePath("../GameState")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state")]
-offset_left = 163.0
-offset_top = -201.0
-offset_right = 936.0
-offset_bottom = -13.0
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+offset_right = 1154.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+offset_left = 169.0
+offset_top = 217.0
+offset_right = 942.0
+offset_bottom = 405.0
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_xfyhy")
-script = ExtResource("5_mvee3")
-state = NodePath("../GameState")
 
-[node name="Label" type="Label" parent="Label"]
+[node name="Label2" type="Label" parent="GameOverScreen"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 160.0
-offset_right = 765.0
-offset_bottom = 186.0
+offset_left = 194.0
+offset_top = 377.0
+offset_right = 934.0
+offset_bottom = 403.0
 text = "Press Space to restart"
 horizontal_alignment = 1
