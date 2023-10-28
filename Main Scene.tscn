@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfsq810qnok35"]
+[gd_scene load_steps=9 format=3 uid="uid://dfsq810qnok35"]
 
 [ext_resource type="Texture2D" uid="uid://c2i835voiyw75" path="res://kenney_shape-characters/PNG/Default/blue_body_circle.png" id="1_bcqk3"]
 [ext_resource type="Script" path="res://scripts/GameState.cs" id="1_fysrf"]
 [ext_resource type="TileSet" uid="uid://ckk5v3dd7fc1k" path="res://Tileset.tres" id="2_ohp1y"]
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="2_yhbk6"]
+[ext_resource type="Script" path="res://FollowCamera.cs" id="5_b5d1n"]
 [ext_resource type="Script" path="res://scripts/GameOverText.cs" id="5_mvee3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tdl0"]
@@ -37,22 +38,30 @@ tile_set = ExtResource("2_ohp1y")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
 
-[node name="GameOverScreen" type="Control" parent="." node_paths=PackedStringArray("state")]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("following")]
+script = ExtResource("5_b5d1n")
+following = NodePath("../Blue Boi")
+
+[node name="GameOverScreen" type="Control" parent="Camera2D" node_paths=PackedStringArray("state")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -6.0
-offset_top = -418.0
-offset_right = 34.0
-offset_bottom = -378.0
+offset_left = -580.0
+offset_top = -325.0
+offset_right = 576.0
+offset_bottom = 326.0
+size_flags_horizontal = 4
 script = ExtResource("5_mvee3")
-state = NodePath("../GameState")
+state = NodePath("../../GameState")
 
-[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
-offset_right = 1154.0
-offset_bottom = 651.0
+[node name="ColorRect" type="ColorRect" parent="Camera2D/GameOverScreen"]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 1199.0
+offset_bottom = 672.0
 color = Color(0, 0, 0, 0.392157)
 
-[node name="Label" type="Label" parent="GameOverScreen"]
+[node name="Label" type="Label" parent="Camera2D/GameOverScreen"]
 offset_left = 169.0
 offset_top = 217.0
 offset_right = 942.0
@@ -60,7 +69,7 @@ offset_bottom = 405.0
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_xfyhy")
 
-[node name="Label2" type="Label" parent="GameOverScreen"]
+[node name="Label2" type="Label" parent="Camera2D/GameOverScreen"]
 layout_mode = 0
 offset_left = 194.0
 offset_top = 377.0
