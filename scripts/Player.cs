@@ -11,6 +11,8 @@ public partial class Player : CharacterBody2D
 	private double current_time = 0;
 	private double run_time = 0;
 
+	[Export] double startup_timer = 2.0f;
+
 	[Export]
 	public GameState state;
 	[Export]
@@ -46,12 +48,16 @@ public partial class Player : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		run_time += delta;	
+		if(run_time < startup_timer) 
+			return;
 		double old_time = current_time;
 		bool jump = false;
 		bool slide_start = false;
 		bool slide_stop = false;
-		current_time += delta;
+		current_time = run_time - startup_timer;
 		timeLabel.Text = String.Format("Time: {0}", current_time);
+
 
 		if(nextInput == null) 
 		{
