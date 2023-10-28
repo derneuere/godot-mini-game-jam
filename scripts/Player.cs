@@ -3,7 +3,7 @@ using System;
 
 public partial class Player : Area2D
 {
-	private Dictionary input_queue;
+	//private Dictionary input_queue;
 	private float current_time = 0;
 	private float run_time = 0;
 
@@ -14,7 +14,6 @@ public partial class Player : Area2D
 
 	public override void _Process(double delta)
 	{
-		run_time += delta;
 		
 	}
 }

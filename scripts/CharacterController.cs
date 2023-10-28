@@ -3,6 +3,9 @@ using System;
 
 public partial class CharacterController : CharacterBody2D
 {
+	[Export]
+	public GameState state;
+	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
@@ -32,6 +35,11 @@ public partial class CharacterController : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		GD.Print(GlobalPosition.Y);
+		
+		if(GlobalPosition.Y > 1000){
+			state.looseGame();
+		}		
 
 		Velocity = velocity;
 		MoveAndSlide();
