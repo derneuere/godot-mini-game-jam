@@ -45,9 +45,11 @@ texture_region_size = Vector2i(80, 80)
 4:0/0 = 0
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(26.8701, -40, -40, 27.5772, -40, 40, 40, 40, 40, -40)
 5:0/0 = 0
 5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, 40, 40, 40, 26.8701, -26.8701, -40, -40, -40)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g83ew"]
 resource_name = "Other Floor"
@@ -58,15 +60,19 @@ texture_region_size = Vector2i(80, 40)
 0:5/0 = 0
 0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:5/0/physics_layer_0/angular_velocity = 0.0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -20.5, 40, -20, 40, 20, -40, 20)
 1:5/0 = 0
 1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -20, 40, -20.5, 40, 20.5, -40, 19.5)
 2:5/0 = 0
 2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -20, 40, -19.5, 40, 20, -40, 20)
 3:5/0 = 0
 3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -19.5, 40, -20, 40, 20, -40, 19.5)
 
 [resource]
 tile_size = Vector2i(80, 80)
