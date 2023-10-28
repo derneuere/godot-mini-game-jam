@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class player : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 
 	private Dictionary input_queue;
