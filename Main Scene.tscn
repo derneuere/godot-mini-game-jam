@@ -36,6 +36,15 @@ tile_set = ExtResource("2_ohp1y")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, -65533, 262151, 0, -131066, 8, 5, -131065, 8, 5, -65528, 8, 5, 65543, 8, 5, 65544, 8, 5, 8, 8, 5, -65527, 8, 5, -131063, 8, 5)
 
+[node name="ColorRect" type="ColorRect" parent="." node_paths=PackedStringArray("state")]
+offset_left = -6.0
+offset_top = -418.0
+offset_right = 1148.0
+offset_bottom = 233.0
+color = Color(0, 0, 0, 0.392157)
+script = ExtResource("5_mvee3")
+state = NodePath("../GameState")
+
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state")]
 offset_left = 163.0
 offset_top = -201.0
@@ -45,3 +54,12 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_xfyhy")
 script = ExtResource("5_mvee3")
 state = NodePath("../GameState")
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 160.0
+offset_right = 765.0
+offset_bottom = 186.0
+text = "Press Space to restart"
+horizontal_alignment = 1
