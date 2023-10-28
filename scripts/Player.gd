@@ -1,6 +1,6 @@
 extends Area2D
 
-var input_queue
+var input_queue = {}
 var current_time = 0
 var run_time
 
