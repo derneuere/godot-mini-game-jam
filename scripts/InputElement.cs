@@ -1,13 +1,13 @@
 public class InputElement 
 {
-    public InputElement(double time, string inputEvent)
-    {
-        Time = time;
-        InputEvent = inputEvent;
-    }
+	public InputElement(double time, string inputEvent)
+	{
+		Time = time;
+		InputEvent = inputEvent;
+	}
 
-    public double Time { get; }
-    public string InputEvent { get; }
+	public double Time { get; }
+	public string InputEvent { get; }
 
-    public override string ToString() => $"({Time}, {InputEvent})";
+	public override string ToString() => $"({Time}, {InputEvent})";
 }

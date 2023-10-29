@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
-
-	// private Dictionary input_queue;
 	public Queue<InputElement> inputQueue;
 	private double current_time = 0;
 	private double run_time = 0;
@@ -23,7 +21,7 @@ public partial class Player : CharacterBody2D
 	private Label timeLabel;
 
 	[Export]
-	private bool running = false;
+	private bool running = true;
 	private bool sliding = false;
 
 	public const float Speed = 160.0f;
