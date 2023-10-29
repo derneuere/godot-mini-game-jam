@@ -26,7 +26,6 @@ layer_0/tile_data = PackedInt32Array(0, 65543, 0, 1, 131079, 0, 2, 131079, 0, 3,
 position = Vector2(-1, -8)
 state = NodePath("../GameState")
 timeLabel = NodePath("../Camera2D/Label")
-running = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("following")]
 script = ExtResource("5_b5d1n")
